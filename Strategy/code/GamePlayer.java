@@ -6,7 +6,7 @@
 
 public class GamePlayer
 {
-   Context context;
+   public Context context;
 
    public void setup(int boardSize, int moveSelectionTime)
    {

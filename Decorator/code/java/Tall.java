@@ -13,7 +13,10 @@ public class Tall extends CharacterDecorator{
   @Override
   public void draw(){
     super.draw();
-    System.out.println("I'm tall!");
+    giveMushroom();
   }
 
+  public void giveMushroom(){
+    System.out.println("I'm tall!");
+  }
 }

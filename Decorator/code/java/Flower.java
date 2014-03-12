@@ -13,7 +13,10 @@ public class Flower extends CharacterDecorator{
   @Override
   public void draw(){
     super.draw();
-    System.out.println("And I can throw fireballs!");
+    giveFlower();
   }
 
+  public void giveFlower(){
+    System.out.println("And I can throw fireballs!");
+  }
 }

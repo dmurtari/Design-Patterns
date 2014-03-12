@@ -13,7 +13,10 @@ public class Star extends CharacterDecorator{
   @Override
   public void draw(){
     super.draw();
-    System.out.println("And I can throw fireballs!");
+    giveStar();
   }
 
+  public void giveStar(){
+    System.out.println("And I can throw fireballs!");
+  }
 }
