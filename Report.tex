@@ -1,0 +1,83 @@
+% CSCI 4448
+% Spring 2014
+% Homework 3: Design Patterns
+% Written by Domenic Murtari (3/12/2014)
+
+\documentclass[12pt]{article}
+
+\usepackage[text={6.5in, 9in}, centering]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+
+\title{CSCI 4448: Homework 4 \\ Design Patterns}
+\author{
+  Domenic Murtari \\
+  Collaborated with Irakli Zhuzhunashvili and Sean Callahan
+}
+\date{3/13/2014}
+
+\begin{document}
+
+\maketitle
+
+\section{Structural Problems}
+\subsection{Structural Problem 3: Decorator}
+
+Structural Problem 3 gives the description of a Mario character who starts as
+a plain, small Mario, and can pick up various power-ups. The decorator pattern 
+is most applicable for this application, since the desire is to have a base 
+character (the plain Mario), and to be able to customize that Mario by giving
+him power-ups.
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width=100mm]{Decorator.png}
+    \caption{Class diagram of Decorator pattern implementation}
+    \label{fig:decorator}
+  \end{center} 
+\end{figure}
+
+\begin{itemize}
+\item Component interface is implemented by {\ttfamily Character}.
+\item The concrete component is implemented by {\ttfamily PlainCharacter}.
+\item The decorator component which provides the ability to decorate Mario with
+  different states of being powered up is implemented by 
+  {\ttfamily CharacterDecorator}.
+\item The different concrete decorators which provide the ability to add 
+  different power-ups to the plain Mario are provided by {\ttfamily Star, Tall} 
+  and {\ttfamily Flower}.
+\end{itemize}
+
+\subsection{Structural Problem 5: Proxy}
+
+Structural Problem 5 describes a bank that needs to access an SQL database, but
+would like the commands for the SQL database to be executed after the database
+has been closed for the day. The Proxy pattern best solves this problem, because
+it allows for the proxy to stand in for the actual database, and the bank will 
+issue commands to the proxy which will send the commands to the actual database
+once the bank closes for the day.
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width=100mm, page=1]{Proxy.png}
+    \caption{Class diagram of Proxy pattern implementation}
+    \label{fig:proxy}
+  \end{center} 
+\end{figure}
+
+\begin{itemize}
+\item The role of the subject interface is played by 
+  {\ttfamily DatabaseInterface}, which both the real database and the proxy 
+  implement allowing for a consistent interface between the two. 
+\item RealSubject is implemented by {\ttfamily Database} which is the actual 
+  instance of the database that the bank interacts with through the proxy.
+\item The Proxy is implemented by {\ttfamily Proxy} which allows the bank to
+  interact with it as if it were the bank, but issues the SQL commands to the
+  real database after the bank closes.
+\item The Client is provided by {\ttfamily BankSim} which simulates the bank
+  interacting with the database.
+\end{itemize}
+
+\section{Creational Problems}
+
+\end{document}
