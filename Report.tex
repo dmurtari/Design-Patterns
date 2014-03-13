@@ -136,4 +136,76 @@ be created which contain information from the original object.
   has learned
 \end{itemize}
 
+
+\newpage
+\section{Behavioral Problems}
+\subsection{Behavioral Problem 2: Strategy}
+
+Behavioral Problem 2 gives an example of designing an algorithm that will best
+select an artificial intelligence to play a game based on criteria such as 
+timers and the game complexity. The strategy pattern fits this problem well, 
+since it allows the selection of different strategies at runtime depending on 
+the type of problem. The game player will be able to select the appropriate 
+artificial intelligence based on parameters from which it will instantiate the
+appropriate game playing algorithm.
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width=100mm]{Strategy.png}
+    \caption{Class diagram of Strategy pattern implementation}
+    \label{fig:strategy}
+  \end{center} 
+\end{figure}
+
+\begin{itemize}
+\item The strategy abstraction is represented by {\ttfamily Context}, which 
+  handles the variations in strategy. {\ttfamily Context} forces each strategy
+  to implement the same methods so that the client will be able to expect the
+  same functionality no matter which strategy is used.
+\item The concrete strategies are represented by {\ttfamily Minimax}, 
+  {\ttfamily TreeSearch}, and {\ttfamily MonteCarlo}. These each implement the
+  methods in {\ttfamily Context} and solve the given problem according to their
+  algorithm.
+\item The client is represented by {\ttfamily GamePlayer}, which selects a 
+  strategy appropriate to the given game through the {\ttfamily setup()} method. 
+  {\ttfamily GamePlayer} will be able to call the same methods no matter which 
+  strategy was selected.
+\end{itemize}
+
+\newpage
+\subsection{Behavioral Problem 3: Visitor}
+
+Behavioral Problem 3 presents the problem of a simulation that needs to be 
+logged while the simulation is running. The Visitor pattern solves this problem
+well, since it allows an outside object to collect information about a running
+object without needing to expose the fields or methods of the object that is 
+being visited.
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width=100mm]{Visitor.png}
+    \caption{Class diagram of Visitor pattern implementation}
+    \label{fig:visitor}
+  \end{center} 
+\end{figure}
+
+\begin{itemize}
+\item The Visitor interface is implemented by {\ttfamily SimulationVisitor}, 
+  which ensures that the visitors will each implement a visit method for each
+  of the classes that are visitable. 
+\item The Concrete Visitor is implemented by {\ttfamily ConcreteVisitor} which
+  implements the {\ttfamily SimulationVisitor} interface, meaning that it must
+  support visiting each of the classes that accept visitors
+\item The Element is represented by {\ttfamily SimulationElement}, which 
+  enforces that each element of the simulation implements a {\ttfamily accept()}
+  method to accept visitors. 
+\item The Concrete Elements are represented by {\ttfamily Arena}, 
+  {\ttfamily Robot}, and {\ttfamily Wall}, which implement the 
+  {\ttfamily SimulationElement} interface by having an {\ttfamily accept()} 
+  method that accepts a visitor object and allows that object to see the 
+  information contained within that object
+\item The Client is represented by {\ttfamily Logger} and accesses the 
+  various elements of the simulation using the Visitor model.
+\end{itemize}
+
 \end{document}
