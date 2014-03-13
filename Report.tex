@@ -3,7 +3,7 @@
 % Homework 3: Design Patterns
 % Written by Domenic Murtari (3/12/2014)
 
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 \usepackage[text={6.5in, 9in}, centering]{geometry}
 \usepackage{graphicx}
@@ -20,6 +20,8 @@
 
 \maketitle
 
+\newpage
+
 \section{Structural Problems}
 \subsection{Structural Problem 3: Decorator}
 
@@ -31,21 +33,24 @@ him power-ups.
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width=100mm]{Decorator.png}
+    \includegraphics[width=100mm]{Decorator.pdf}
     \caption{Class diagram of Decorator pattern implementation}
     \label{fig:decorator}
   \end{center} 
 \end{figure}
 
 \begin{itemize}
-\item Component interface is implemented by {\ttfamily Character}.
-\item The concrete component is implemented by {\ttfamily PlainCharacter}.
+\item Component interface is implemented by {\ttfamily Character}, which 
+  describes the method that will be used to decorate the object (in this case,
+  each decorator will implement {\ttfamily draw()}).
+\item The concrete component is implemented by {\ttfamily PlainCharacter}, which
+  defines the default character that is able to be decorated.
 \item The decorator component which provides the ability to decorate Mario with
   different states of being powered up is implemented by 
   {\ttfamily CharacterDecorator}.
-\item The different concrete decorators which provide the ability to add 
-  different power-ups to the plain Mario are provided by {\ttfamily Star, Tall} 
-  and {\ttfamily Flower}.
+\item The concrete decorators which provide the ability to add different 
+  power-ups to the plain Mario are provided by {\ttfamily Star, Tall} and 
+  {\ttfamily Flower}.
 \end{itemize}
 
 \newpage
@@ -60,7 +65,7 @@ once the bank closes for the day.
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width=100mm]{Proxy.png}
+    \includegraphics[width=100mm]{Proxy.pdf}
     \caption{Class diagram of Proxy pattern implementation}
     \label{fig:proxy}
   \end{center} 
@@ -91,7 +96,7 @@ auto-grader running in its own thread will pull from the same queue
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width=100mm]{Singleton.png}
+    \includegraphics[width=100mm]{Singleton.pdf}
     \caption{Class diagram of Singleton pattern implementation}
     \label{fig:singleton}
   \end{center} 
@@ -119,7 +124,7 @@ be created which contain information from the original object.
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width=100mm]{Prototype.png}
+    \includegraphics[width=100mm]{Prototype.pdf}
     \caption{Class diagram of Prototype pattern implementation}
     \label{fig:prototype}
   \end{center} 
@@ -151,7 +156,7 @@ appropriate game playing algorithm.
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width=100mm]{Strategy.png}
+    \includegraphics[width=100mm]{Strategy.pdf}
     \caption{Class diagram of Strategy pattern implementation}
     \label{fig:strategy}
   \end{center} 
@@ -183,7 +188,7 @@ being visited.
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width=100mm]{Visitor.png}
+    \includegraphics[width=100mm]{Visitor.pdf}
     \caption{Class diagram of Visitor pattern implementation}
     \label{fig:visitor}
   \end{center} 
