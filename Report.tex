@@ -48,6 +48,7 @@ him power-ups.
   and {\ttfamily Flower}.
 \end{itemize}
 
+\newpage
 \subsection{Structural Problem 5: Proxy}
 
 Structural Problem 5 describes a bank that needs to access an SQL database, but
@@ -59,7 +60,7 @@ once the bank closes for the day.
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width=100mm, page=1]{Proxy.png}
+    \includegraphics[width=100mm]{Proxy.png}
     \caption{Class diagram of Proxy pattern implementation}
     \label{fig:proxy}
   \end{center} 
@@ -69,7 +70,7 @@ once the bank closes for the day.
 \item The role of the subject interface is played by 
   {\ttfamily DatabaseInterface}, which both the real database and the proxy 
   implement allowing for a consistent interface between the two. 
-\item RealSubject is implemented by {\ttfamily Database} which is the actual 
+\item The RealSubject is implemented by {\ttfamily Database} which is the actual 
   instance of the database that the bank interacts with through the proxy.
 \item The Proxy is implemented by {\ttfamily Proxy} which allows the bank to
   interact with it as if it were the bank, but issues the SQL commands to the
@@ -78,6 +79,61 @@ once the bank closes for the day.
   interacting with the database.
 \end{itemize}
 
+\newpage
 \section{Creational Problems}
+\subsection{Creational Problem 1: Singleton}
+
+Creational Problem 1 presents an auto-grader that could potentially be 
+multi-threaded, which gives rise to the need for a queue that will be compatible
+with multiple threads. The Singleton Pattern solves this, since only one 
+singleton can exist (even for multiple threads), and will thus ensure that each
+auto-grader running in its own thread will pull from the same queue
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width=100mm]{Singleton.png}
+    \caption{Class diagram of Singleton pattern implementation}
+    \label{fig:singleton}
+  \end{center} 
+\end{figure}
+
+\begin{itemize}
+\item The Singleton is represented by {\ttfamily SubmissionQueue}, which 
+  maintain a queue of submissions that need to be graded. The constructor for 
+  the SubmissionQueue is private, only being invoked by 
+  {\ttfamily getSubmissionQueue} which only creates a new 
+  {\ttfamily SubmissionQueue} if one does not exist already.
+\item The client is represented by {\ttfamily Grader}, which aggregates an
+  instance of {\ttfamily SubmissionQueue} and can only instantiate
+  SubmissionQueues through the {\ttfamily getSubmissionQueue} method.
+\end{itemize}
+
+\newpage
+\subsection{Creational Problem 2: Prototype}
+
+Creational Problem 2 gives a neural network that learns. The ability to make new
+neural networks without having to have the new neural network relearn everything
+that the first neural network learned. The Prototype pattern resolves this 
+issue, since the Prototype pattern gives a way for new instances of a class to 
+be created which contain information from the original object.
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width=100mm]{Prototype.png}
+    \caption{Class diagram of Prototype pattern implementation}
+    \label{fig:prototype}
+  \end{center} 
+\end{figure}
+
+\begin{itemize}
+\item The Prototype interface is represented by {\ttfamily Network}, which 
+  ensure that any class implementing it will implement a {\ttfamily clone()} 
+  method.
+\item The Concrete Prototypes are represented by {\ttfamily NeuralNetwork} and
+  {\ttfamily NeuralNetwork1}. The client will call {\ttfamily NeuralNetwork}'s 
+  {\ttfamily clone()} method, which creates a new neural network object
+  {\ttfamily NeuralNetwork1} which contains everything {\ttfamily NeuralNetwork}
+  has learned
+\end{itemize}
 
 \end{document}
