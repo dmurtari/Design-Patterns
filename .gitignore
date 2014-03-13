@@ -24,6 +24,7 @@
 *.ind
 *.lof
 *.lot
+*.log
 *.maf
 *.mtc
 *.mtc1
